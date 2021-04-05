@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/>
+        <meta name="Réseau social de l'entreprise groupomania" content="Un forum d'échange entre salariés."/>
+        <link href="css/styles.css" rel="stylesheet" type="text/css"/>    
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">    
+        <script src="https://kit.fontawesome.com/2e4e807c32.js" crossorigin="anonymous"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+        <title>groupomania</title>
+    </head>
+    <body class="body container-fluid">              
+        <nav>
+            <ul class="nav justify-content-start nav-fill">
+                <li class="nav-item">
+                    <a class="text-decoration-none text-white" href="inscription.html">S'incrire</a> 
+                </li>
+                <li class="nav-item">
+                    <a class="text-decoration-none text-white" href="connexion.html">Se connecter</a>                     
+                </li>
+                <li class="nav-item">
+                    <a class="text-decoration-none text-white" href="deconnexion.html">Se déconnecter</a> 
+                </li>
+            </ul>  
+        </nav>
+        <div class="row">            
+            <a href="index.html">         
+                <img class="logo d-block mx-auto img-fluid p-2" src='./images/icon-left-font-monochrome-white-redimensionné.png' alt="logo Groupomania">    
+            </a>    
+          </div>
+        <main id="main" class="row">
+            <div class="form-row flex-column justify-content-center m-0 p-0">  
+                <ul class="nav nav-fill">
+                    <li class="nav-item h-50 bg-secondary">
+                        <a class="nav-link pl-4 p-1 col-1 text-white font-weight-bold" href="forum.html">
+                            <i class="fas fa-angle-left"></i>
+                        </a>
+                    </li>   
+                    <li class="nav-item h-50 bg-secondary">
+                        <a class="nav-link p-1 text-white font-weight-bold" href="forumTexte.html">Forum texte</a>
+                    </li>
+                    <li class="nav-item h-50 bg-secondary">
+                        <a class="nav-link p-1 text-white font-weight-bold" href="forumMultimedia.html">Forum Multimédia</a>
+                    </li>
+                </ul>  
+                <h1 class="text-center text-white">Forum Texte</h1>
+                <div class="border border-white rounded">
+                    <form id="forumTexte"  class="row justify-content-center was-validated needs-validation" novalidate>
+                        <div class="form-group col-11 col-md-10 m-0 p-1">
+                            <label for="post" class="col-auto col-form-label col-form-label-sm"></label> 
+                            <textarea name="post" id="post" class="form-control form-control-lg" placeholder="Veuillez saisir un nouveau post" v-model="post" pattern="[A-Za-z\s\-éöàäèüáúóêûîôâ']{2,1500}" required></textarea>
+                            <div class="valid-feedback">Valide</div>
+                            <div class="invalid-feedback"></div>
+                        </div>
+                        <div class="form-group col-6 col-md-7 col-lg-9 col-xl-11 mb-2 text-center">
+                            <button id="post" type="submit" class="btn btn-primary btn-lg col-12 col-md-5 mt-3 mb-2">Poster</button>
+                        </div>            
+                    </form>
+                </div>
+                <div id="posts">
+                    <section v-if="errored">
+                        <p>Nous sommes désolés, nous ne sommes pas en mesure de récupérer ces informations pour le moment. Veuillez réessayer ultérieurement.</p>
+                    </section>
+                    <section v-else>
+                        <div v-if="loading">Chargement...</div>
+                        <div v-else v-for-key="forums" class="forums">
+                            {{ forum.description }}
+                            
+                        </div>
+                    </section>
+                </div>   
+                <div>
+                    <button class="btn btn-primary btn-sm"><i class="far fa-comment-dots"></i></button>
+                    <button class="btn btn-primary btn-sm"><i class="far fa-trash-alt"></i></button>
+                </div>        
+            </div>
+        </main>
+        <footer class="footer row pb-3 m-0 p-lg-5">
+            <ul class="col-12 d-flex flex-column justify-items-center align-items-center flex-md-row justify-content-md-between">
+                <li class="col-10 col-md-4 text-center list-unstyled">
+                    <a class="text-decoration-none text-white" href="#">Politique de confidentialité</a> 
+                </li>
+                <li class="col-10 col-md-3 text-center list-unstyled">
+                    <a class="text-decoration-none text-white" href="#">Réglement du forum</a>
+                </li>
+                <li class="col-10 col-md-3 text-center list-unstyled">
+                    <a class="text-decoration-none text-white" href="desinscription.html">Désinscription</a>
+                </li>
+                <li class="col-10 col-md-2 text-center list-unstyled">
+                    <a class="text-decoration-none text-white" href="mailto:groupomania@reseau-social.fr">Contact</a>
+                </li>              
+            </ul>
+        </footer>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+        <script src="js/forumTexte.js"></script>
+    </body>
+</html>
